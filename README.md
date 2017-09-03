@@ -1,4 +1,4 @@
-# Amnesty Api [![Build Status](https://travis-ci.com/Towerism/amnesty-api.svg?branch=master)](https://travis-ci.com/Towerism/amnesty-api)
+# Amnesty Api [![Build Status](https://travis-ci.org/Towerism/amnesty-api.svg?branch=master)](https://travis-ci.org/Towerism/amnesty-api)
 
 
 > The api for the Amnesty International blog
