@@ -24,3 +24,6 @@ yarn test
 
 ## Deployment N.B.
 Before deploying be sure to set the `JWT_SECRET` environment variable.
+
+### Database
+Set the user and password via the environment variables `DB_USER` and `DB_PASSWORD`. Configure the database connection in `config/config.js`.
