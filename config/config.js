@@ -1,5 +1,4 @@
 module.exports = {
-  use_env_variable: !!process.env.DATABASE_URL,
   development: {
     dialect: "sqlite",
     storage: "db.development.sqlite"
@@ -9,10 +8,6 @@ module.exports = {
     storage: ":memory:"
   },
   production: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: "d3evnnsjpv32p9",
-    host: "ec2-107-22-251-55.compute-1.amazonaws.com",
-    dialect: "postgres"
+    use_env_variable: "DATABASE_URL"
   }
 }
