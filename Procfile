@@ -1,1 +1,1 @@
-web: yarn && yarn run initdb && yarn run start
+web: yarn run start

@@ -10,7 +10,10 @@
 yarn install
 
 # initialize database
-yarn run initdb
+yarn run db:init
+
+# migrate database (run this after database changes)
+yarn run db:migrate
 
 # serve with auto reload at localhost:3000
 yarn run dev

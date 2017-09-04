@@ -1,4 +1,5 @@
 module.exports = {
+  use_env_variable: !!process.env.DATABASE_URL,
   development: {
     dialect: "sqlite",
     storage: "db.development.sqlite"

@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node ./bin/start",
     "dev": "set NODE_ENV=development&& nodemon --inspect=3000 ./bin/start",
-    "initdb": "sequelize db:migrate && sequelize db:seed:all",
+    "db:seed": "sequelize db:seed:all",
+    "db:migrate": "sequelize db:migrate",
+    "db:init": "npm run db:migrate && npm run db:seed",
     "test": "set NODE_ENV=test&& mocha --recursive ./test/*Test.js --compilers js:babel-core/register"
   },
   "dependencies": {
@@ -24,6 +26,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.0",
     "passport-local": "^1.0.0",
+    "pg": "^7.3.0",
     "sequelize": "^4.7.5",
     "sequelize-fixtures": "^0.6.0",
     "serve-favicon": "^2.4.3"
