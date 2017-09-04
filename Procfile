@@ -1,1 +1,1 @@
-web: PORT=80 yarn run start
+web: yarn run initdb && yarn run start
