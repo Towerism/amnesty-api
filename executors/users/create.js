@@ -1,8 +1,9 @@
 import EventEmitter from 'events'
 import passwordHasher from '../../services/passwordHasher'
-import { inject } from 'aurelia-dependency-injection'
+import { inject, transient } from 'aurelia-dependency-injection'
 
 @inject('UserRepository')
+@transient()
 export default class Create extends EventEmitter {
   constructor(userRepository) {
     super()

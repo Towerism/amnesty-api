@@ -1,10 +1,11 @@
 import EventEmitter from 'events'
 import util from './util'
 import _ from 'lodash'
-import { inject } from 'aurelia-dependency-injection'
+import { inject, transient } from 'aurelia-dependency-injection'
 import UserRepository from '../../repositories/user'
 
 @inject(UserRepository)
+@transient()
 export default class GetAll extends EventEmitter {
   constructor(userRepository) {
     super()
