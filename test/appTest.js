@@ -1,6 +1,5 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import 'aurelia-polyfills'
 
 import app from '../app';
 
