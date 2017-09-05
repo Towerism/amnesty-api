@@ -1,8 +1,7 @@
 import EventEmitter from 'events'
 import { inject, transient } from 'aurelia-dependency-injection'
-import UserRepository from '../../repositories/user'
 
-@inject(UserRepository)
+@inject('UserRepository')
 @transient()
 export default class DeleteById extends EventEmitter {
   constructor(userRepository) {
