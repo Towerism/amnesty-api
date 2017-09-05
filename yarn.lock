@@ -232,6 +232,12 @@ aurelia-pal@^1.0.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/aurelia-pal/-/aurelia-pal-1.4.0.tgz#1148f256c854c0e020a0a8f465cbf4a6eeaf9188"
 
+aurelia-polyfills@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/aurelia-polyfills/-/aurelia-polyfills-1.2.2.tgz#b8d0eb059e94f25be583e29af0aa50ab49f5c27d"
+  dependencies:
+    aurelia-pal "^1.0.0"
+
 aws-sign2@~0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.6.0.tgz#14342dd38dbcc94d0e5b87d763cd63612c0e794f"

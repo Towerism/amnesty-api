@@ -42,6 +42,7 @@
     "serve-favicon": "^2.4.3"
   },
   "devDependencies": {
+    "aurelia-polyfills": "^1.2.2",
     "chai": "^4.1.1",
     "chai-http": "^3.0.0",
     "eslint": "^4.5.0",
