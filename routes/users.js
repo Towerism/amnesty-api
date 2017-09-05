@@ -1,76 +1,54 @@
-import models from '../models'
 import express from 'express'
 import { authenticated } from '../auth'
-import _ from 'lodash'
-import bcrypt from 'bcrypt'
+import * as executors from '../executors/users'
+import ioc from '../ioc'
 
 var router = express.Router()
-
-function mapToUserViewModel(user) {
-  return {
-    id: user.id,
-    email: user.email,
-    firstname: user.firstname,
-    lastname: user.lastname
-  }
-}
 
 router.all('*', authenticated())
 
 router.get('/', (req, res) => {
-  models.User.findAll().then(users => {
-    res.send(_(users).map(mapToUserViewModel))
+  const getAll = ioc.get(executors.GetAll)
+  getAll.on('success', users => {
+    res.send(users)
   })
+  getAll.execute()
 })
 
 router.get('/:userId', (req, res) => {
-  models.User.findById(req.params.userId).then(user => {
-    res.send(mapToUserViewModel(user))
+  const getById = ioc.get(executors.GetById)
+  getById.on('success', user => {
+    res.send(user)
   })
+  getById.execute(req.params.userId)
 })
 
 router.post('/:userId/password', (req, res) => {
-  if (req.user.id !== parseInt(req.params.userId)) {
-    return res.status(401).send('UNAUTHORIZED')
-  }
-  var model = req.body
-  req.user.validatePassword(model.oldPassword).then(result => {
-    if (!result) {
-      return res.status(400).send({ title: 'Failed', message: 'Invalid Password' })
-    }
-    if (model.newPassword !== model.confirmPassword) {
-      return res.status(400).send({ title: 'Failed', message: 'Passwords did not match' })
-    }
-    bcrypt.hash(model.newPassword, 10).then(password => {
-      models.User.findById(req.params.userId).then(user => {
-        user.password = password
-        user.save({ fields: ['password'] })
-      })
-    })
-    res.send('SUCCESS')
-  })
+  const updatePassword = ioc.get(executors.UpdatePassword)
+  updatePassword
+    .on('userIdMismatch', () => res.sendStatus(401))
+    .on('invalidPassword', () => res.status(400).send({ error: 'Failed', message: 'Invalid Password' }))
+    .on('passwordMismatch', () => res.status(400).send({ error: 'Failed', message: 'Passwords did not match' }))
+    .on('success', () => res.sendStatus(200))
+  updatePassword.execute(Object.assign({
+    requestedId: parseInt(req.params.userId),
+    authUser: req.user
+  }, req.body))
 })
 
 router.post('/create', function(req, res, next) {
-  bcrypt.hash('Password2', 10).then(password => {
-    var user = req.body
-    user.password = password
-    models.User.create(user).then(() => {
-      res.send(mapToUserViewModel(user))
-    }).catch(err => {
-      next(err)
-    })
-  })
+  const create = ioc.get(executors.Create)
+  create
+    .on('success', () => res.sendStatus(200))
+    .on('validationError', message => res.status(400).send({ error: 'Validation', message }))
+    .on('error', err => next(err))
+  create.execute(req.body)
 })
 
 router.delete('/:userId', function(req, res) {
-  models.User.destroy({
-    where: {
-      id: req.params.userId
-    }
-  }).then(function() {
-    res.status(200).send('Success')
-  })
+  const deleteById = ioc.get(executors.DeleteById)
+  deleteById.on('success', () => res.sendStatus(200))
+  deleteById.execute(req.params.userId)
 })
 
 export default router
