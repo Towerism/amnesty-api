@@ -39,6 +39,7 @@
     "pg": "^7.3.0",
     "sequelize": "^4.7.5",
     "sequelize-cli": "^2.8.0",
+    "sequelize-decorators": "^1.0.1",
     "sequelize-fixtures": "^0.6.0",
     "serve-favicon": "^2.4.3"
   },

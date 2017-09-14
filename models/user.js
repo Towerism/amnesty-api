@@ -24,11 +24,5 @@ export default (sequelize, DataTypes) => {
         }
       }
     })
-  // TODO: use instanceMethods field for this
-  User.prototype.validatePassword = function (password) {
-    return bcrypt.compare(password, this.password).then(result => {
-      return result
-    })
-  }
   return User
 }

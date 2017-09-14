@@ -4278,6 +4278,10 @@ redefine@^0.2.0:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/redefine/-/redefine-0.2.1.tgz#e89ee7a6f24d19fff62590569332dc60380a89a3"
 
+reflect-metadata@^0.1.3:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.10.tgz#b4f83704416acad89988c9b15635d47e03b9344a"
+
 regenerate@^1.2.1:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.3.2.tgz#d1941c67bad437e1be76433add5b385f95b19260"
@@ -4527,6 +4531,12 @@ sequelize-cli@^2.8.0:
     resolve "^1.3.3"
     umzug "^1.12.0"
     yargs "^8.0.1"
+
+sequelize-decorators@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/sequelize-decorators/-/sequelize-decorators-1.0.1.tgz#cbfcff42460efd66791aaae2e37f6532e7b6f880"
+  dependencies:
+    reflect-metadata "^0.1.3"
 
 sequelize-fixtures@^0.6.0:
   version "0.6.0"

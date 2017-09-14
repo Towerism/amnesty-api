@@ -9,6 +9,12 @@ export default class UserRepository {
     return models.User.findById(id)
   }
 
+  getByEmail(email) {
+    return models.User.findOne({
+      where: { email }
+    })
+  }
+
   create(user) {
     return models.User.create(user)
   }
