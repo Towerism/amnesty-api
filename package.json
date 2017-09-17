@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node ./bin/start",
-    "dev": "set NODE_ENV=development&& nodemon --inspect=3000 ./bin/start",
+    "dev": "set NODE_ENV=development&& nodemon --inspect=4000 ./bin/start",
     "db:seed": "sequelize db:seed:all",
     "db:migrate": "sequelize db:migrate",
     "db:init": "npm run db:migrate && npm run db:seed",
@@ -59,7 +59,7 @@
     "eslint-plugin-react": "^7.2.1",
     "eslint-plugin-standard": "^3.0.1",
     "mocha": "^3.5.0",
-    "nodemon": "^1.11.0",
+    "nodemon": "^1.12.1",
     "sqlite3": "^3.1.9"
   },
   "description": "Api for Amnesty International Blog",
